@@ -5,11 +5,14 @@
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:id="@+id/relative"
     >
+
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/scroll">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_marginStart="20dp"
@@ -17,14 +20,15 @@
             android:layout_marginTop="100dp"
             android:fitsSystemWindows="true"
             android:orientation="vertical"
+            android:id="@+id/linear3"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:background="@drawable/layout_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="400dp"
                 android:orientation="vertical"
                 >
                 <ImageView
@@ -116,18 +120,32 @@
                             app:layout_constraintTop_toTopOf="parent"
                             android:textSize="20dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                <TextView
-                    android:layout_width="wrap_content"
+                <Button
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/skip"
-                    android:id="@+id/skip"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="bottom|end"
+                    android:text="Register"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:padding="15dp"
+                    android:onClick="register"
+                    android:textAllCaps="false"
                     android:textSize="20dp"
-                    android:layout_marginRight="5dp"
-                    android:textStyle="italic"/>
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn"/>
+
             </LinearLayout>
         </LinearLayout>
+
 </ScrollView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skip"
+        android:gravity="center"
+        android:layout_below="@+id/scroll"
+        android:id="@+id/skip"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+       />
 </RelativeLayout>

@@ -139,7 +139,7 @@ public class SignupActivity extends AppCompatActivity  implements
                 }
                 else{
                     ButtonFinished();
-                    Toast.makeText(SignupActivity.this, "Enter Unique Mobile Or Username " , Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignupActivity.this, "Mobile and User Name Should be Unique " , Toast.LENGTH_LONG).show();
                 }
             }
             @Override

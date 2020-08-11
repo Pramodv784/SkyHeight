@@ -22,7 +22,7 @@ public class ApiClient {
             public Response intercept(Chain chain) throws IOException {
 
                    Request newRequest = chain.request().newBuilder()
-                           .addHeader("Authorization",ConstantClass.BEARERTOKEN)
+                           .addHeader("Authorization",ConstantClass.BEARER_TOKEN)
                            .build();
                     return chain.proceed(newRequest);
                 }

@@ -1,6 +1,10 @@
 package com.android.skyheight.activity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import retrofit2.Call;
@@ -10,6 +14,7 @@ import retrofit2.Response;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -19,6 +24,7 @@ import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.text.style.UnderlineSpan;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -26,6 +32,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.android.skyheight.R;
 import com.android.skyheight.api.ApiClient;
 import com.android.skyheight.model.LoginModel;
@@ -42,7 +49,9 @@ ProgressBar progressBar;
 TextView login,skip;
 ConstraintLayout constraintLayout;
 
+
     View view;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +66,7 @@ ConstraintLayout constraintLayout;
     yourprefrence = Prefrence.getInstance(UserLoginActivity.this);
        // password.setTransformationMethod(PasswordTransformationMethod.getInstance());
         //password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-    skip=findViewById(R.id.skip);
+    skip=(TextView)findViewById(R.id.skip);
         SpannableString content = new SpannableString("skip");
         content.setSpan(new UnderlineSpan(),0,content.length(),0);
         skip.setText(content);
@@ -65,7 +74,7 @@ ConstraintLayout constraintLayout;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(UserLoginActivity.this,HomeActivity.class));
-                
+
             }
         });
         password.addTextChangedListener(new TextWatcher() {
@@ -76,7 +85,6 @@ ConstraintLayout constraintLayout;
                     constraintLayout.setBackgroundResource(R.drawable.layout);
                 }
             }
-
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // TODO Auto-generated method stub
@@ -165,9 +173,7 @@ ConstraintLayout constraintLayout;
         progressBar.setVisibility(View.GONE);
         login.setText("Login");
     }
-    public void register(View view) {
-        startActivity(new Intent(UserLoginActivity.this,SignupActivity.class));
-    }
+
 
     @Override
     public void onBackPressed() {
@@ -178,5 +184,15 @@ ConstraintLayout constraintLayout;
                         finishAffinity();
                     }
                 }).setActionTextColor(getResources().getColor(R.color.colorPrimary)).show();
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int text = item.getItemId();
+        switch (text) {
+            case R.id.skip:
+                startActivity(new Intent(UserLoginActivity.this,SignupActivity.class));
+
+        }
+        return  super.onOptionsItemSelected(item);
     }
 }

@@ -13,7 +13,29 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:orientation="vertical">
-  <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Site Name"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColorHint="@color/colorPrimary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/colorPrimary"
+                android:textCursorDrawable="@color/colorPrimary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="10dp"
