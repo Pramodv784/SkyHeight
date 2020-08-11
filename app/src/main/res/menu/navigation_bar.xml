@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/admin_control"
+            android:icon="@drawable/admin_icon"
+            android:title="Admin Control" />
+        <item
+            android:id="@+id/history"
+            android:icon="@drawable/history_icon"
+            android:title="HISTORY" />
+
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/profile_icon"
+            android:title="PROFILE" />
+        <item
+            android:id="@+id/language"
+            android:icon="@drawable/language"
+            android:title="LANGUAGE" />
+
+    </group>
+<group android:enabled="true">
+<item android:title="SHARE"
+    android:icon="@drawable/share_icon"
+    android:id="@+id/share"/>
+    <item android:title="LOGOUT"
+        android:icon="@drawable/logout"
+        android:id="@+id/logout"/>
+</group>
+</menu>
