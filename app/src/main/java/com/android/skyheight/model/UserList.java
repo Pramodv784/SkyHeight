@@ -8,7 +8,19 @@ public class UserList implements Serializable {
     private String user_image;
     private String mobile_number;
     private String type;
+    private String id;
     private boolean is_active;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
+
     public UserList(String username, String user_image,String mobile_number,String type,boolean is_active) {
         this.username = username;
         this.user_image = user_image;

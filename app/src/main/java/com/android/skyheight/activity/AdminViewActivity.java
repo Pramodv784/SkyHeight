@@ -22,23 +22,21 @@ public class AdminViewActivity extends AppCompatActivity {
     }
 
     public void addsite(View view) {
-        Toast.makeText(getApplicationContext(),"Feature In Progress... ",Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(AdminViewActivity.this,AddSiteActivity.class));
     }
 
     public void userlist(View view) {
         startActivity(new Intent(AdminViewActivity.this,CustomerListActivity.class));
     }
 
-    public void deletecust(View view) {
-        startActivity(new Intent(AdminViewActivity.this,DeleteCustomerActivity.class));
-    }
+
 
     public void adduser(View view) {
         startActivity(new Intent(AdminViewActivity.this,SignupActivity.class));
     }
 
     public void sitelist(View view) {
-        startActivity(new Intent(AdminViewActivity.this,SiteListView.class));
+        startActivity(new Intent(AdminViewActivity.this, PlotList.class));
     }
 
     public void addpartner(View view) {
@@ -58,7 +56,7 @@ public class AdminViewActivity extends AppCompatActivity {
     }
 
     public void activate(View view) {
-        Toast.makeText(getApplicationContext(),"Feature In Progress... ",Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(AdminViewActivity.this,ActivateUserActivity.class));
     }
 
     public void deactive(View view) {Toast.makeText(getApplicationContext(),"Feature In Progress... ",Toast.LENGTH_SHORT).show();

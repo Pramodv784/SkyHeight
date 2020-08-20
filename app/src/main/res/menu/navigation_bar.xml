@@ -28,6 +28,7 @@
     android:id="@+id/share"/>
     <item android:title="LOGOUT"
         android:icon="@drawable/logout"
+        android:visible="true"
         android:id="@+id/logout"/>
 </group>
 </menu>

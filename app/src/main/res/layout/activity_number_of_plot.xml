@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.NumberOfPlotActivity">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/plot_number"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:hint="Number of Plot "
+        android:textAlignment="center"
+        app:hintTextAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColorHint="@color/colorPrimary"
+        android:gravity="center_horizontal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:padding="15dp"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorPrimary"
+            android:textCursorDrawable="@color/colorPrimary" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Plot "
+        android:onClick="plot"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button"/>
+</LinearLayout>

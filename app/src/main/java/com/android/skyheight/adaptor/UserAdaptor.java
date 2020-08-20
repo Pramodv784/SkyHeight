@@ -26,8 +26,9 @@ public class UserAdaptor extends RecyclerView.Adapter<UserAdaptor.ViewHolder> {
   private Context context;
    private ArrayList<UserList> userlist;
      List<UserList> list2;
-
-
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
     public UserAdaptor(Context context, ArrayList<UserList> userlist, List<UserList> list2) {
         this.context =context;
         this.userlist=userlist;
@@ -42,9 +43,10 @@ public class UserAdaptor extends RecyclerView.Adapter<UserAdaptor.ViewHolder> {
         return viewHolder;
     }
     @Override
-    public void onBindViewHolder(@NonNull UserAdaptor.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final UserAdaptor.ViewHolder holder, int position) {
         final UserList mylist=userlist.get(position);
         holder.user_name.setText(mylist.getUser_name());
+
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +68,7 @@ public class UserAdaptor extends RecyclerView.Adapter<UserAdaptor.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView user_image;
         public TextView user_name;
+
         public RelativeLayout relativeLayout;
         public ViewHolder(@NonNull View itemView) {
            super(itemView);
@@ -74,4 +77,5 @@ public class UserAdaptor extends RecyclerView.Adapter<UserAdaptor.ViewHolder> {
            this.relativeLayout=(RelativeLayout)itemView.findViewById(R.id.relative2);
         }
     }
+
 }

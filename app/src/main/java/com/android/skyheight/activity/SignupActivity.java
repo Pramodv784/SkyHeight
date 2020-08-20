@@ -59,12 +59,8 @@ public class SignupActivity extends AppCompatActivity  implements
         yourprefrence= Prefrence.getInstance(SignupActivity.this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         type.setOnItemSelectedListener(this);
-
-
-        //Creating the ArrayAdapter instance having the country list
         ArrayAdapter aa = new ArrayAdapter(this,R.layout.spinner_dropdown_layout,usertype);
         aa.setDropDownViewResource(R.layout.spinner_layout);
-        //Setting the ArrayAdapter data on the Spinner
         type.setAdapter(aa);
     }
     public void userReg(View view) {
@@ -125,7 +121,6 @@ public class SignupActivity extends AppCompatActivity  implements
             @Override
             public void onResponse(Call<UserDetail> call, Response<UserDetail> response) {
                 if (response.code() == 201) {
-
 
                     yourprefrence.saveData(ConstantClass.USERNAME,response.body().getUsername());
                     yourprefrence.saveData(ConstantClass.PASSWORD,response.body().getPassword());

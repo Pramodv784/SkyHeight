@@ -34,8 +34,9 @@ public class Prefrence {
     }
 
     public void clear(){
-        // Delete all shared preferences
-
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
 
     }
 

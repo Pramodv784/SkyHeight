@@ -64,16 +64,20 @@ ConstraintLayout constraintLayout;
     constraintLayout=findViewById(R.id.constraint);
         view =findViewById(R.id.myprogressbutton);
     yourprefrence = Prefrence.getInstance(UserLoginActivity.this);
+
        // password.setTransformationMethod(PasswordTransformationMethod.getInstance());
         //password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
     skip=(TextView)findViewById(R.id.skip);
-        SpannableString content = new SpannableString("skip");
+        SpannableString content = new SpannableString("Guest User");
         content.setSpan(new UnderlineSpan(),0,content.length(),0);
         skip.setText(content);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserLoginActivity.this,HomeActivity.class));
+
+               Intent intent = new Intent(UserLoginActivity.this,HomeActivity.class);
+               intent.putExtra("Guest User","Guest User");
+               startActivity(intent);
 
             }
         });
@@ -146,6 +150,7 @@ ConstraintLayout constraintLayout;
                yourprefrence.saveData(ConstantClass.TYPE,response.body().getType());
                yourprefrence.saveData(ConstantClass.USERNAME,response.body().getUsername());
                yourprefrence.saveData(ConstantClass.ADDRESS,response.body().getAddress());
+               yourprefrence.saveData(ConstantClass.ID,response.body().getId());
                     ButtonFinished();
                 startActivity(new Intent(UserLoginActivity.this,HomeActivity.class));
                 }
@@ -185,14 +190,9 @@ ConstraintLayout constraintLayout;
                     }
                 }).setActionTextColor(getResources().getColor(R.color.colorPrimary)).show();
     }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int text = item.getItemId();
-        switch (text) {
-            case R.id.skip:
-                startActivity(new Intent(UserLoginActivity.this,SignupActivity.class));
 
-        }
-        return  super.onOptionsItemSelected(item);
+
+    public void register(View view) {
+        startActivity(new Intent(UserLoginActivity.this,SignupActivity.class));
     }
 }

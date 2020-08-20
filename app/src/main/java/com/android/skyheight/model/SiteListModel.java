@@ -1,52 +1,67 @@
 package com.android.skyheight.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class SiteListModel implements Serializable {
-private int price;
-private String plot_image;
+private String price;
+private String image;
 private String key_id;
-private String fav_status;
+private String area;
+private String description;
+private String file;
+private String name;
+ArrayList<AddressModel> location ;
+ public UserDetail owner;
+ public AddressModel site_location;
 
+    public AddressModel getSite_location() {
+        return site_location;
+    }
 
-    public int getPrice() {
+    public void setSite_location(AddressModel site_location) {
+        this.site_location = site_location;
+    }
+
+    public UserDetail getOwner() {
+        return owner;
+    }
+
+    public void setOwner(UserDetail owner) {
+        this.owner = owner;
+    }
+
+    public SiteListModel(String price, String image, String key_id,
+                         String area, String description, String file,
+                          String name
+                          ,UserDetail owner,AddressModel site_location) {
+        this.price = price;
+        this.image = image;
+        this.key_id = key_id;
+        this.area = area;
+        this.owner=owner;
+        this.description = description;
+        this.file = file;
+        this.site_location=site_location;
+        this.name = name;
+    }
+
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
-    public String getPlot_image() {
-        return plot_image;
+
+    public String getImage() {
+        return image;
     }
 
-    public void setPlot_image(String plot_image) {
-        this.plot_image = plot_image;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getSite_address() {
-        return site_address;
-    }
-
-    public void setSite_address(String site_address) {
-        this.site_address = site_address;
-    }
-
-    public String getPlot_size() {
-        return plot_size;
-    }
-
-    public void setPlot_size(String plot_size) {
-        this.plot_size = plot_size;
-    }
-
-    public String getPlot_owner() {
-        return plot_owner;
-    }
-
-    public void setPlot_owner(String plot_owner) {
-        this.plot_owner = plot_owner;
-    }
     public String getKey_id() {
         return key_id;
     }
@@ -54,23 +69,36 @@ private String fav_status;
     public void setKey_id(String key_id) {
         this.key_id = key_id;
     }
-    public String getFav_status() {
-        return getFav_status();
+
+
+    public String getArea() {
+        return area;
     }
 
-    public void setFav_status(String fav_status) {
-        this.plot_owner = fav_status;
+    public void setArea(String area) {
+        this.area = area;
     }
-    private String site_address;
-private String plot_size;
-private String plot_owner;
 
-    public SiteListModel(String plot_image,int price, String site_address, String plot_size, String plot_owner,String fav_status) {
-        this.price = price;
-        this.site_address = site_address;
-        this.plot_size = plot_size;
-        this.plot_owner = plot_owner;
-        this.plot_image =plot_image;
-        this.fav_status=fav_status;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

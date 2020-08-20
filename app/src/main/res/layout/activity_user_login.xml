@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:fitsSystemWindows="true"
             android:orientation="vertical"
             android:id="@+id/linear3"
@@ -30,6 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:orientation="vertical"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
                 >
                 <ImageView
                     android:layout_width="80dp"
@@ -47,6 +49,7 @@
                     android:drawablePadding="10dp"
                     android:drawableRight="@drawable/mobile_icon"
                     android:padding="15dp"
+                    android:text="1234567891"
                     android:layout_marginTop="10dp"
                     android:textSize="20dp"
                     android:textColor="@color/black"
@@ -61,7 +64,7 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:hint="Enter Password"
-                    app:passwordToggleEnabled="true"
+                    android:text="pramod@98"
                     android:drawablePadding="10dp"
                     android:drawableRight="@drawable/password"
                     android:padding="15dp"
@@ -135,17 +138,18 @@
                     android:background="@drawable/btn"/>
 
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guest User"
+                android:gravity="center"
+                android:layout_below="@+id/scroll"
+                android:id="@+id/skip"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
         </LinearLayout>
 
 </ScrollView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Skip"
-        android:gravity="center"
-        android:layout_below="@+id/scroll"
-        android:id="@+id/skip"
-        android:textSize="20dp"
-        android:textColor="@color/black"
-       />
+
 </RelativeLayout>

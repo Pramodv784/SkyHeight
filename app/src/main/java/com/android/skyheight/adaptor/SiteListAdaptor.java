@@ -2,59 +2,48 @@ package com.android.skyheight.adaptor;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
+
 import com.android.skyheight.R;
 import com.android.skyheight.activity.SiteDetailActivity;
-import com.android.skyheight.activity.SiteListView;
-import com.android.skyheight.helper.FavDB;
+import com.android.skyheight.model.AddressModel;
 import com.android.skyheight.model.SiteListModel;
-import com.android.skyheight.utils.Prefrence;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
-import com.squareup.picasso.Picasso;
+import com.android.skyheight.model.UserDetail;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.android.skyheight.R.drawable.heart_checked;
-import static com.android.skyheight.R.drawable.is_booked;
-import static com.android.skyheight.R.drawable.site_list;
+import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
+
 public class SiteListAdaptor extends RecyclerView.Adapter<SiteListAdaptor.ViewHolder> {
     private ArrayList<SiteListModel> siteListModels;
     private Context context;
+    List<SiteListModel> list;
+    ArrayList<AddressModel> address = new ArrayList<AddressModel>();
+    //ArrayList<UserDetail> owner = new ArrayList<UserDetail>();
+    ArrayList<SiteListModel> sitlist= new ArrayList<SiteListModel>();
     private SiteListModel siteListModel;
-    SiteListModel[] list;
-    public SiteListAdaptor(SiteListModel[] list ,Context context) {
-        this.list = list;
-        this.context=context;
+    String useName;
+    private String owner;
+   UserDetail owner3;
+    public SiteListAdaptor( Context context,ArrayList<SiteListModel> siteListModels,List<SiteListModel> list) {
+        this.context = context;
+        this.siteListModels=siteListModels;
+        this.list=list;
     }
     @NonNull
     @Override
@@ -68,55 +57,55 @@ public class SiteListAdaptor extends RecyclerView.Adapter<SiteListAdaptor.ViewHo
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final SiteListModel mylist = list[position];
-        holder.site_size.setText(mylist.getPlot_size());
-        holder.site_owner.setText(mylist.getPlot_owner());
-        holder.site_price.setText("₹ " + mylist.getPrice()+" sq/m");
-        holder.site_image.setImageResource(Integer.parseInt(mylist.getPlot_image()));
+        final SiteListModel siteModel=list.get(position);
 
 
 
+        Log.e(TAG, "data>>>>>: "+useName );
+        holder.site_size.setText(siteModel.getArea());
+       holder.site_owner.setText(useName);
+        holder.site_name.setText( siteModel.getName());
+      if(siteModel.getSite_location()!=null){
+          holder.site_address.setText(siteModel.site_location.getAddress());
+      }
+      else {
+          holder.site_address.setText("");
+      }
 
+        //holder.site_image.setImageResource(Integer.parseInt(mylist.getImage()));
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SiteDetailActivity.class);
                 Bundle args = new Bundle();
-                args.putSerializable("ARRAYLIST", (Serializable) mylist);
+                args.putSerializable("ARRAYLIST", (Serializable) siteModel);
                 intent.putExtra("BUNDLE", args);
                 context.startActivity(intent);
-                Toast.makeText(v.getContext(), "You Clicked" + mylist.getPrice(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "You Clicked" + siteModel.getPrice(), Toast.LENGTH_SHORT).show();
             }
         });
     }
     @Override
     public int getItemCount() {
-        return list.length;
+        return list.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView site_image;
-        public TextView site_price;
+        public TextView site_name;
         public TextView site_size;
         public TextView site_owner;
         public TextView site_address;
         public CardView cardView;
-
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.site_image = (ImageView) itemView.findViewById(R.id.image);
-            this.site_price = (TextView) itemView.findViewById(R.id.price);
-            this.site_address = (TextView) itemView.findViewById(R.id.address);
-            this.site_owner = (TextView) itemView.findViewById(R.id.owner);
+            this.site_name = (TextView) itemView.findViewById(R.id.name);
+            this.site_address = (TextView) itemView.findViewById(R.id.site_address);
+            this.site_owner = (TextView) itemView.findViewById(R.id.owner1);
             this.site_size = (TextView) itemView.findViewById(R.id.size);
-
             cardView = (CardView) itemView.findViewById(R.id.cardview);
 
         }
     }
-
-
-
-
 }

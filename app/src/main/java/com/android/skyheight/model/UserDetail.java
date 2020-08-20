@@ -1,6 +1,8 @@
 package com.android.skyheight.model;
 
-public class UserDetail {
+import java.io.Serializable;
+
+public class UserDetail implements Serializable {
     public  String username;
     public  String password;
     public  String confirm_password;

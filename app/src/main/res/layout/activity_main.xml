@@ -8,7 +8,7 @@
     android:layout_gravity="bottom"
   android:background="#ffffff"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
+    tools:openDrawer=""
     tools:context=".activity.HomeActivity"
   >
 
@@ -28,10 +28,26 @@
            app:title="JMP">
 
        </androidx.appcompat.widget.Toolbar>
+
+       <ProgressBar
+           android:id="@+id/progressbar"
+           style="@style/Widget.AppCompat.ProgressBar"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerInParent="true"
+           android:layout_centerVertical="true"
+           android:layout_gravity="center"
+           android:layout_marginTop="10dp"
+           android:indeterminate="true"
+           android:indeterminateTint="@color/colorPrimary"
+           android:indeterminateTintMode="src_atop"
+           android:visibility="visible"
+           tools:layout_centerInParent="true" />
        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:orientation="vertical">
+
            <androidx.recyclerview.widget.RecyclerView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"

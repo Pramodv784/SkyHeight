@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="75dp"
-    android:layout_height="75dp"
+    android:layout_height="82dp"
     android:id="@+id/cardview"
+    android:elevation="5dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,56 +14,41 @@
         android:layout_height="match_parent"
         android:id="@+id/linear"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/imageview"
-            android:background="@color/lavender"
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="5"
+           android:id="@+id/plot_number"
+           android:gravity="center"
+           android:textSize="30dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/plot_description"
+            android:text="Indore locatin"
             android:layout_gravity="center"
-            android:src="@drawable/plotimage3"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="indore"
-            android:id="@+id/location"
             android:layout_marginTop="2dp"
             android:textSize="8sp"
             android:gravity="center"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/area_unit"
-            android:text="12 acres"
-            android:layout_marginLeft="5dp"
+            android:id="@+id/plot_size"
+            android:text="200 sqr.ft"
+            android:layout_gravity="center"
             android:layout_marginTop="2dp"
             android:textSize="8sp"
             android:gravity="center"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/status"
             android:text="booked"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center"
             android:textSize="8sp"
             android:gravity="center"/>
-            <ImageView
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/site_image"
-                android:src="@drawable/is_not_book"/>
+
         </LinearLayout>
-    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

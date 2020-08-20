@@ -61,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Owner"
+                android:id="@+id/owner"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
@@ -72,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Mukesh Verma"
-                android:id="@+id/owner"
+                android:id="@+id/owner1"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
@@ -310,6 +311,7 @@
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_gravity="bottom"
+      android:onClick="call"
       android:background="@color/colorPrimary"
       android:layout_height="60dp">
       <ImageView
