@@ -21,7 +21,6 @@
                 android:layout_weight="2"
                 app:cardCornerRadius="10dp"
                 android:onClick="adduser"
-
                 android:layout_margin="5dp"
                 android:layout_height="110dp">
                 <LinearLayout
@@ -327,7 +326,7 @@
                 android:layout_width="100dp"
                 android:layout_weight="2"
                 app:cardCornerRadius="10dp"
-                android:onClick="history"
+                android:onClick="sitelistplot"
                 android:layout_margin="5dp"
                 android:layout_height="110dp">
                 <LinearLayout
@@ -338,11 +337,11 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:src="@drawable/history_icon"/>
+                        android:src="@drawable/sitplotlist"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="History"
+                        android:text="Site List"
                         android:textSize="10dp"
                         android:layout_marginTop="5dp"
                         android:gravity="center"

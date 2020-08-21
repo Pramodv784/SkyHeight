@@ -70,5 +70,9 @@ public interface UserService {
     @POST("site/{id}/plots/{plots_count}")
     Call<PlotsModel> plots(@Header("Authorization") String token,
                            @Path("id") String id,@Path("plots_count") String plots_count);
+    @DELETE("site/{id}")
+    Call<DeleteModel> deletesite(@Header("Authorization") String token,@Path("id") String delete);
+    @GET("site/plot")
+    Call<ArrayList<PlotListModel>> siteplot(@Header("Authorization") String token,@Query("site") String site);
 
 }

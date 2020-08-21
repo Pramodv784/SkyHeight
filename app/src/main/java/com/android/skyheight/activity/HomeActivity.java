@@ -22,20 +22,14 @@ import android.widget.ToggleButton;
 
 import com.android.skyheight.R;
 import com.android.skyheight.adaptor.SiteListAdaptor;
-import com.android.skyheight.adaptor.UserAdaptor;
 import com.android.skyheight.api.ApiClient;
 import com.android.skyheight.model.SiteListModel;
-import com.android.skyheight.model.SiteModel;
-import com.android.skyheight.model.UserList;
 import com.android.skyheight.utils.ConstantClass;
 import com.android.skyheight.utils.Prefrence;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.jackandphantom.circularimageview.CircleImage;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -59,7 +53,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer);
         progressBar=findViewById(R.id.progressbar);
@@ -129,7 +123,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     Toast.makeText(getApplicationContext(),"List Failed ",Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<ArrayList<SiteListModel>> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
@@ -192,7 +185,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         startActivity(new Intent(HomeActivity.this, UserLoginActivity.class));
         // Toast.makeText(getApplicationContext(),"Email"+yourprefrence.getData(ConstantClass.EMAIL),Toast.LENGTH_SHORT).show();
     }
-
     @Override
     public void onBackPressed() {
         Snackbar.make(drawer, "Are you Sure want to exit", Snackbar.LENGTH_LONG)
@@ -209,7 +201,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         }
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();

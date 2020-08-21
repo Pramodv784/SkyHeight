@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.skyheight.R;
@@ -21,22 +22,21 @@ import retrofit2.Response;
 public class NumberOfPlotActivity extends AppCompatActivity {
 TextInputLayout plot_number;
 Prefrence yourprefrence;
-String token ="";
-String id="";
+ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_of_plot);
         plot_number= findViewById(R.id.plot_number);
         yourprefrence=Prefrence.getInstance(this);
+        progressBar=findViewById(R.id.progressbar);
     }
 
     public void plot(View view) {
         String plot =plot_number.getEditText().getText().toString();
         //PlotsModel plotsModel = new PlotsModel(plot,yourprefrence.getData(SiteUtils.ID));
         plotCount(plot);
-
-
     }
 
     private void plotCount(String plot_count) {
@@ -47,16 +47,18 @@ String id="";
             @Override
             public void onResponse(Call<PlotsModel> call, Response<PlotsModel> response) {
                 if (response.code()==201){
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(),"Plot "+response.body().getNo_plots(),Toast.LENGTH_SHORT).show();
 
                 }
                 else {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<PlotsModel> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
             }
         });

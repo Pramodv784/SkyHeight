@@ -61,9 +61,7 @@ public class ActivateUserActivity extends AppCompatActivity implements ActivateA
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
-
             }
-
             @Override
             public void onFailure(Call<ArrayList<UserList>> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);

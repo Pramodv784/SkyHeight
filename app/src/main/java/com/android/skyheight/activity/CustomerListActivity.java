@@ -67,7 +67,6 @@ public class CustomerListActivity extends AppCompatActivity{
             public void onResponse(Call<ArrayList<UserList>> call, Response<ArrayList<UserList>> response) {
                 //Type listType = new TypeToken<ArrayList<UserList>>() {}.getType();
                 //ArrayList<UserList> allUserses = new GsonBuilder().create().fromJson(String.valueOf(response.body()), listType);
-                //Log.d("Bhagawam", "Responce: " + allUserses.size());
                 if (response.code()==200){
                     progressBar.setVisibility(View.GONE);
                       userlist = response.body();
@@ -108,6 +107,7 @@ public class CustomerListActivity extends AppCompatActivity{
                         @Override
                         public void onClick(View v) {
                             String id = userlist.get(position).getId();
+                            Log.e("done","site_id"+id );
                             userlist.remove(position);
                             userAdaptor.notifyItemRemoved(position);
                             deleteuser(id);
@@ -129,7 +129,8 @@ public class CustomerListActivity extends AppCompatActivity{
     };
 
     private void deleteuser(String id) {
-        Call<DeleteModel> userResponseCall = ApiClient.getUserService().delete(id,yourprefrence.getData(ConstantClass.TOKEN));
+        Call<DeleteModel> userResponseCall = ApiClient.getUserService()
+                .delete("Bearer "+yourprefrence.getData(ConstantClass.TOKEN),id);
         userResponseCall.enqueue(new Callback<DeleteModel>() {
             @Override
             public void onResponse(Call<DeleteModel> call, Response<DeleteModel> response) {

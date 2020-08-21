@@ -61,7 +61,8 @@ public class PlotListAdaptor extends RecyclerView.Adapter<PlotListAdaptor.ViewHo
         }
         else {
             holder.status.setText("Booked");
-            holder.status.setTextColor(Color.parseColor("#D83131"));
+            holder.status.setTextColor(
+                    Color.parseColor("#D83131"));
         }
        /* if (sitelist.get(position).getIsbooked()){
             holder.site_image.setImageResource(R.drawable.is_not_book);

@@ -3,6 +3,7 @@ package com.android.skyheight.activity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import fr.ganfra.materialspinner.MaterialSpinner;
 import okhttp3.MediaType;
@@ -47,6 +48,8 @@ import java.io.File;
 public class AddSiteActivity extends AppCompatActivity implements
         AdapterView.OnItemSelectedListener {
     Intent myfile;
+     Spinner spinner;
+     ConstraintLayout constraint;
     TextView pick, file, pick_image, image;
     public static final int PICK_IMAGE = 1;
     Prefrence yourprefrence;
@@ -72,6 +75,7 @@ public class AddSiteActivity extends AppCompatActivity implements
         site_area = findViewById(R.id.site_area);
         site_description = findViewById(R.id.description);
         pick = findViewById(R.id.pick_file);
+        constraint=findViewById(R.id.constraint);
         file = findViewById(R.id.file);
         progressBar = findViewById(R.id.progressbar);
         yourprefrence = Prefrence.getInstance(AddSiteActivity.this);
@@ -85,7 +89,6 @@ public class AddSiteActivity extends AppCompatActivity implements
                 startActivityForResult(myfile, 10);
             }
         });
-
         pick_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,10 +97,7 @@ public class AddSiteActivity extends AppCompatActivity implements
                 startActivityForResult(intent, 50);
             }
         });
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
     }
     public void addlocation(View view) {
 
@@ -108,7 +108,7 @@ public class AddSiteActivity extends AppCompatActivity implements
          final EditText address = (EditText) dialogView.findViewById(R.id.site_address);
        final   EditText street = (EditText) dialogView.findViewById(R.id.site_street);
         Button add_address = (Button) dialogView.findViewById(R.id.add_address);
-        final Spinner spinner =(Spinner)dialogView.findViewById(R.id.spinner);
+         spinner =(Spinner)dialogView.findViewById(R.id.spinner);
 
         ArrayAdapter aa = new ArrayAdapter(this,R.layout.spinner_dropdown_layout,ciy);
         aa.setDropDownViewResource(R.layout.spinner_layout);
@@ -120,10 +120,15 @@ public class AddSiteActivity extends AppCompatActivity implements
                 site_street= street.getText().toString();
                 site_city= spinner.getSelectedItem().toString().trim();
                 dialogBuilder.dismiss();
+                addbuttonenable();
             }
         });
         dialogBuilder.setView(dialogView);
         dialogBuilder.show();
+    }
+
+    private void addbuttonenable() {
+       constraint.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -178,14 +183,20 @@ public class AddSiteActivity extends AppCompatActivity implements
     }
 
     public void addsite(View view) {
-        name1 = site_name.getEditText().getText().toString();
-         area = site_area.getEditText().getText().toString();
-         price = site_price.getEditText().getText().toString();
+        name1 = site_name.getEditText().getText().toString().trim();
+         area = site_area.getEditText().getText().toString().trim();
+         price = site_price.getEditText().getText().toString().trim();
          description = site_description.getEditText().getText().toString();
+         site_city= spinner.getSelectedItem().toString().trim();
         if (name1.isEmpty()) {
             site_name.setError("Enter the Site Name");
             site_name.requestFocus();
-        } else {
+        } else if(site_city.equals("Select User")) {
+            Toast.makeText(getApplicationContext(),"Please Select City ",Toast.LENGTH_SHORT).show();
+        }
+
+
+        else{
             progressBar.setVisibility(View.VISIBLE);
             AddressModel addressModel = new AddressModel(site_address, site_street, site_city);
             //SiteModel siteModel = new SiteModel(name1, area, price, description, picture, anyfile);
@@ -256,5 +267,4 @@ public class AddSiteActivity extends AppCompatActivity implements
             }
         });
     }
-
 }

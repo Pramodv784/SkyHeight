@@ -19,23 +19,19 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         youprefrence=Prefrence.getInstance(this);
         handler=new Handler();
-
-
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (youprefrence.getData(ConstantClass.TOKEN).length()>6){
+                if (youprefrence.getData(ConstantClass.TOKEN).length()>10){
                     Intent intent=new Intent(SplashActivity.this,HomeActivity.class);
                     startActivity(intent);
                     finish();
-
                 }
                 else {
                     Intent intent=new Intent(SplashActivity.this,UserLoginActivity.class);
                     startActivity(intent);
                     finish();
                 }
-
             }
         },3000);
 

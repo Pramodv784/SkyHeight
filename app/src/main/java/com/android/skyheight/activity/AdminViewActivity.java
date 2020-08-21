@@ -73,4 +73,8 @@ public class AdminViewActivity extends AppCompatActivity {
     public void alluserlist(View view) {
         startActivity(new Intent(AdminViewActivity.this,CustomerListActivity.class));
     }
+
+    public void sitelistplot(View view) {
+        startActivity(new Intent(AdminViewActivity.this,SiteListPlotActivity.class));
+    }
 }

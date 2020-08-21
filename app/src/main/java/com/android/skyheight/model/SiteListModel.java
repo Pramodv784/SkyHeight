@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class SiteListModel implements Serializable {
 private String price;
 private String image;
-private String key_id;
+private String id;
 private String area;
 private String description;
 private String file;
@@ -31,13 +31,13 @@ ArrayList<AddressModel> location ;
         this.owner = owner;
     }
 
-    public SiteListModel(String price, String image, String key_id,
+    public SiteListModel(String price, String image, String id,
                          String area, String description, String file,
                           String name
                           ,UserDetail owner,AddressModel site_location) {
         this.price = price;
         this.image = image;
-        this.key_id = key_id;
+        this.id = id;
         this.area = area;
         this.owner=owner;
         this.description = description;
@@ -62,12 +62,12 @@ ArrayList<AddressModel> location ;
         this.image = image;
     }
 
-    public String getKey_id() {
-        return key_id;
+    public String getid() {
+        return id;
     }
 
-    public void setKey_id(String key_id) {
-        this.key_id = key_id;
+    public void setid(String id) {
+        this.id = id;
     }
 
 

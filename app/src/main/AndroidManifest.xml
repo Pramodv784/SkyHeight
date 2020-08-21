@@ -15,8 +15,10 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.NumberOfPlotActivity"></activity>
+        <activity android:name=".activity.SiteListPlotActivity" android:parentActivityName=".activity.AdminViewActivity"></activity>
+        <activity android:name=".activity.NumberOfPlotActivity" />
         <activity android:name=".activity.ActivateActivity" />
+
         <activity
             android:name=".activity.SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -38,9 +40,11 @@
             android:name=".activity.PlotList"
             android:parentActivityName=".activity.AdminViewActivity" />
         <activity
+
             android:name=".activity.UserProfileActivity"
             android:parentActivityName=".activity.HomeActivity" />
         <activity
+            android:hardwareAccelerated="true"
             android:name=".activity.CustomerListActivity"
             android:parentActivityName=".activity.AdminViewActivity" />
         <activity

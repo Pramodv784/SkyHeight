@@ -11,19 +11,24 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.skyheight.R;
 import com.android.skyheight.model.SiteListModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
+
 public class SiteDetailActivity extends AppCompatActivity {
     TextView owner1, area, price, location,llocation;
-
+    FloatingActionButton fab;
+    String site_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,7 @@ public class SiteDetailActivity extends AppCompatActivity {
         Bundle args = intent.getBundleExtra("BUNDLE");
         SiteListModel siteListModel = (SiteListModel) args.getSerializable("ARRAYLIST");
         owner1.setText(siteListModel.getOwner().getUsername());
+         site_id= siteListModel.getid();
         price.setText("₹  " + siteListModel.getPrice() + " sq/ft");
         if (siteListModel.getSite_location()!=null){
             location.setText(siteListModel.site_location.getAddress());
@@ -48,9 +54,6 @@ public class SiteDetailActivity extends AppCompatActivity {
             location.setText("yiutut");
             llocation.setText("dfds");
         }
-
-
-
     }
 
     public void call(View view) {
@@ -65,7 +68,6 @@ public class SiteDetailActivity extends AppCompatActivity {
             }
         }
     }
-
     private void callPhoneNumber() {
         try {
             if (Build.VERSION.SDK_INT > 22) {
@@ -73,11 +75,9 @@ public class SiteDetailActivity extends AppCompatActivity {
                     ActivityCompat.requestPermissions(SiteDetailActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 101);
                     return;
                 }
-
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setData(Uri.parse("tel:  8359968242"));
                 startActivity(callIntent);
-
             } else {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setData(Uri.parse("tel:  8359968242"));
@@ -86,5 +86,13 @@ public class SiteDetailActivity extends AppCompatActivity {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public void siteplot(View view) {
+        Intent intent = new Intent(SiteDetailActivity.this,PlotList.class);
+        intent.putExtra("id",site_id);
+
+        startActivity(intent);
+
     }
 }

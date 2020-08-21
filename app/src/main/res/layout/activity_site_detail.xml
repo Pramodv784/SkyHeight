@@ -308,7 +308,17 @@
     </LinearLayout>
 
     </ScrollView>
-  <LinearLayout
+
+<com.jackandphantom.circularimageview.CircleImage
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:onClick="siteplot"
+    android:layout_gravity="bottom|end"
+    android:src="@drawable/add_icon"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="70dp"/>
+
+    <LinearLayout
       android:layout_width="match_parent"
       android:layout_gravity="bottom"
       android:onClick="call"
@@ -323,4 +333,5 @@
           />
 
   </LinearLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
